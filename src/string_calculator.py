@@ -14,20 +14,10 @@ class StringCalculator:
 
             for empty string, it returns 0.
         """
-        if self.is_empty(numbers):
+        if not numbers:
             return 0
         return int(numbers) # refactor + green 
         
     
-    def is_empty(self, numbers:str)->bool:
-        """
-        Checks if the input string is empty.
-
-        Args:
-            numbers (str): The input string to check.
-
-        Returns:
-            bool: True if the string is empty, False otherwise.
-        """
-        return numbers == ""
+    
         
