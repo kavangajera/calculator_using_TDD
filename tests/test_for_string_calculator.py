@@ -17,6 +17,11 @@ class TestStringCalculator(unittest.TestCase):
         """Test adding a single number."""
         result = self.calculator.add("5")
         self.assertEqual(result, 5)
+    
+    def test_add_two_numbers_returns_sum(self)->None:
+        """Test adding two numbers."""
+        result = self.calculator.add("4,3")
+        self.assertEqual(result, 7)
 
 if __name__ == '__main__':
     unittest.main()
