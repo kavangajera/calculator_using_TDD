@@ -16,7 +16,10 @@ class StringCalculator:
         """
         if not numbers:
             return 0
-        return int(numbers) # refactor + green 
+        
+        list_of_numbers = numbers.split(',')
+
+        return sum(int(num) for num in list_of_numbers)
         
     
     
