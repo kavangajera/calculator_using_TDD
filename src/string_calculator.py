@@ -16,6 +16,7 @@ class StringCalculator:
         """
         if self.is_empty(numbers):
             return 0
+        return int(numbers) # refactor + green 
         
     
     def is_empty(self, numbers:str)->bool:
