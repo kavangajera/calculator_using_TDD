@@ -4,15 +4,13 @@ class StringCalculator:
     """
     def add(self,numbers:str)->int:
         """
-        Adds numbers from a string separated by commas.
+        Adds numbers from a comma-separated string.
 
         Args:
-            numbers (str): A string with 0,1 or 2 integers separated by commas.
+            numbers (str): A string containing up to two integers separated by a comma.
 
         Returns:
-            int: The sum of the numbers.
-
-            for empty string, it returns 0.
+            int: The sum of the numbers in the string. Returns 0 for an empty string.
         """
         if not numbers:
             return 0
