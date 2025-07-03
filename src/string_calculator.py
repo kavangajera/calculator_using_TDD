@@ -3,5 +3,17 @@ class StringCalculator:
     The string can contain numbers separated by commas or empty string.
     """
     def add(self,numbers:str)->int:
-        """Adds numbers represented as a string."""
-        pass
+        """
+        Adds numbers from a string separated by commas.
+
+        Args:
+            numbers (str): A string with 0,1 or 2 integers separated by commas.
+
+        Returns:
+            int: The sum of the numbers.
+
+            for empty string, it returns 0.
+        """
+        if numbers == "":
+            return 0
+        
