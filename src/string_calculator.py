@@ -1,5 +1,5 @@
 import re
-
+from typing import List,Callable
 class StringCalculator:
     """
     A simple calculator that adds numbers from a string.
@@ -11,6 +11,7 @@ class StringCalculator:
         Initializes the StringCalculator instance.
         """
         self._add_called_count = 0
+        self._subscribers:List[Callable[[str, int], None]] = []
 
     def add(self, numbers: str) -> int:
         """
@@ -28,7 +29,20 @@ class StringCalculator:
 
         cleaned_string = self.extract_numbers_string(numbers)
         delimiters = self.get_delimiters(numbers)
-        return self.calculate_sum(cleaned_string, delimiters)
+        result = self.calculate_sum(cleaned_string, delimiters)
+        # Notify subscribers after addition
+        for subscriber in self._subscribers:
+            subscriber(numbers, result)
+        return result
+    
+    def subscribe(self, callback: Callable[[str, int], None]) -> None:
+        """
+        Subscribes a callback function to be called after each addition.
+
+        Args:
+            callback (Callable[[str, int], None]): The callback function to be called.
+        """
+        self._subscribers.append(callback)
 
     def extract_numbers_string(self, numbers: str) -> str:
         """
