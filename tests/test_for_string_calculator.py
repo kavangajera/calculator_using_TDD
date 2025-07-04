@@ -33,13 +33,35 @@ class TestStringCalculator(unittest.TestCase):
         result = self.calculator.add("1\n2,3")
         self.assertEqual(result, 6)
     
-    def test_add_with_custom_single_one_character_delimiter(self)->None:
+    def test_add_with_custom_single_one_character_semicolon_delimiter(self)->None:
         """Test adding numbers with a custom single character delimiter."""
-        result1 = self.calculator.add("//;\n1;2")
-        result2 = self.calculator.add("//=\n4=2=5")
+        result = self.calculator.add("//;\n1;2")
+        self.assertEqual(result, 3)
+    
+    def test_add_with_custom_single_one_character_assignment_delimiter(self)->None:
+        """Test adding numbers with a custom single character assignment delimiter."""
+        result = self.calculator.add("//=\n1=10")
+        self.assertEqual(result, 11)
 
-        self.assertEqual(result1, 3)
-        self.assertEqual(result2, 11)
+    def test_add_with_string_having_one_egative_number_string_length_one(self)->None:
+        """Test adding a string with one negative number in one length string."""
+        with self.assertRaises(ValueError) as context:
+            self.calculator.add("-3")
+        self.assertEqual(str(context.exception), "negatives not allowed: -3")
+
+    
+    def test_add_with_string_having_one_egative_number(self)->None:
+        """Test adding a string with one negative number."""
+        with self.assertRaises(ValueError) as context:
+            self.calculator.add("-5,4")
+        self.assertEqual(str(context.exception), "negatives not allowed: -5")
+    
+
+    
+    
+
+    
+
 
 if __name__ == '__main__':
     unittest.main()
