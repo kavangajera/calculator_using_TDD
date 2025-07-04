@@ -95,7 +95,9 @@ class StringCalculator:
                 num = int(token)
                 if num < 0:
                     negatives.append(str(num))
-                total += num
+                if num <= 1000:
+                    # Ignore numbers greater than 1000
+                    total += num
 
         if negatives:
             raise ValueError(f"negatives not allowed: {','.join(negatives)}")
