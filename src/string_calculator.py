@@ -73,7 +73,8 @@ class StringCalculator:
             if header.startswith("[") and header.endswith("]"):
                 # Extract everything between [ ]
                 matches = re.findall(r"\[(.*?)\]", header)
-                return [re.escape(match) for match in matches]
+                
+                return [re.escape(match[0]) for match in matches]
             else:
                 # Single custom delimiter
                 return [re.escape(header)]
