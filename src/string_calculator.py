@@ -7,7 +7,7 @@ class StringCalculator:
         Adds numbers from a comma-separated string.
 
         Args:
-            numbers (str): A string containing up to two integers separated by a comma.
+            numbers (str): A string containing integers separated by a comma.
 
         Returns:
             int: The sum of the numbers in the string. Returns 0 for an empty string.
