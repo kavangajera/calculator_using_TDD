@@ -100,7 +100,7 @@ class StringCalculator:
         for token in tokens:
             if token:
                 num = int(token)
-                if num < 0:
+                if num < 0: 
                     negatives.append(str(num))
                 if num <= 1000:
                     # Ignore numbers greater than 1000
