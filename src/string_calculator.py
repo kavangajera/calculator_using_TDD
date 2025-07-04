@@ -96,7 +96,7 @@ class StringCalculator:
         tokens = re.split(pattern, numbers)
         #finding a negative number and calculating total
         negatives = []
-        total = 0
+        total = 0 
         for token in tokens:
             if token:
                 num = int(token)
