@@ -17,6 +17,10 @@ class StringCalculator:
         
         list_of_numbers = numbers.split(',')
 
+        total_numbers = len(list_of_numbers)
+        if total_numbers > 2:
+            raise ValueError("Only up to two numbers are allowed.")
+
         return sum(int(num) for num in list_of_numbers)
         
     
