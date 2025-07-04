@@ -42,6 +42,11 @@ class TestStringCalculator(unittest.TestCase):
         """Test adding numbers with a custom single character assignment delimiter."""
         result = self.calculator.add("//=\n1=10")
         self.assertEqual(result, 11)
+    
+    def test_add_with_custom_single_one_character_or_delimiter(self)->None:
+        """Test adding numbers with a custom single character assignment delimiter."""
+        result = self.calculator.add("//|\n1|10")
+        self.assertEqual(result, 11)
 
     def test_add_with_string_having_one_egative_number_string_length_one(self)->None:
         """Test adding a string with one negative number in one length string."""
