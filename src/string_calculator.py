@@ -6,6 +6,12 @@ class StringCalculator:
     The string may contain numbers separated by commas, newlines, or a custom delimiter.
     """
 
+    def __init__(self):
+        """
+        Initializes the StringCalculator instance.
+        """
+        self._add_called_count = 0
+
     def add(self, numbers: str) -> int:
         """
         Adds numbers from a string using default (comma, newline) or custom delimiters.
@@ -16,6 +22,7 @@ class StringCalculator:
         Returns:
             int: The sum of the numbers. Returns 0 for an empty string.
         """
+        self._add_called_count += 1  # Increment counter
         if not numbers:
             return 0
 
@@ -80,3 +87,9 @@ class StringCalculator:
             raise ValueError(f"negatives not allowed: {','.join(negatives)}")
 
         return total
+    
+    def get_called_count(self) -> int:
+        """
+        Returns how many times the add() method was called.
+        """
+        return self._add_called_count
