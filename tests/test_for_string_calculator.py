@@ -133,6 +133,12 @@ class TestStringCalculator(unittest.TestCase):
         result = self.calculator.add("//[;\\][**%]\n1;\\2**%4")
         self.assertEqual(result, 7)
     
+    def test_add_with_negative_zero(self):
+        """Test adding a string with negative zero."""
+        result = self.calculator.add("-0,2,1000")
+        self.assertEqual(result, 1002)
+    
+    
    
 
 if __name__ == '__main__':
