@@ -62,6 +62,18 @@ class TestStringCalculator(unittest.TestCase):
             self.calculator.add("1,-2,3,-4")
         self.assertEqual(str(context.exception), "negatives not allowed: -2,-4")
     
+    def test_add_with_string_having_multiple_negative_numbers_with_newlines(self)->None:
+        """Test adding a string with multiple negative numbers with newlines."""
+        with self.assertRaises(ValueError) as context:
+            self.calculator.add("1\n-2,3\n-4")
+        self.assertEqual(str(context.exception), "negatives not allowed: -2,-4")
+    
+    def test_add_with_string_having_negative_numbers_and_custom_delimiter(self)->None:
+        """Test adding a string with negative numbers and a custom delimiter."""
+        with self.assertRaises(ValueError) as context:
+            self.calculator.add("//;\n1;-2;3;-4")
+        self.assertEqual(str(context.exception), "negatives not allowed: -2,-4")
+    
 
     
     
