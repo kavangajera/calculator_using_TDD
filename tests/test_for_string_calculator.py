@@ -85,6 +85,7 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.get_called_count(), 3)
     
     def test_event_add_occurred_is_triggered(self):
+        """Test that the event is triggered when add is called."""
         received = []
 
         def listener(input_str, result):
@@ -101,6 +102,21 @@ class TestStringCalculator(unittest.TestCase):
         """Test that numbers greater than 1000 are ignored."""
         result = self.calculator.add("1001,2,3,1000")
         self.assertEqual(result, 1005)
+    
+    def test_add_with_delimiter_of_any_length(self):
+        """Test adding numbers with a delimiter of any length."""
+        result = self.calculator.add("//[***]\n1***2***3")
+        self.assertEqual(result, 6)
+    
+    def test_add_with_delimiter_of_any_length_mixed_characters(self):
+        """Test adding numbers with a delimiter of any length with mixed chars."""
+        result = self.calculator.add("//[*//*]\n1*//*2*//*3")
+        self.assertEqual(result, 6)
+
+    
+    
+   
+
 
 
 
