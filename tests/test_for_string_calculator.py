@@ -83,6 +83,20 @@ class TestStringCalculator(unittest.TestCase):
         self.calculator.add("")
 
         self.assertEqual(self.calculator.get_called_count(), 3)
+    
+    def test_event_add_occurred_is_triggered(self):
+        received = []
+
+        def listener(input_str, result):
+            received.append((input_str, result))
+
+        calc = StringCalculator()
+        calc.subscribe(listener)
+
+        calc.add("1,2")
+        calc.add("//;\n1;2")
+        self.assertEqual(received, [("1,2", 3),("//;\n1;2", 3)])
+
 
 
     
