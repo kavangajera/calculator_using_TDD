@@ -35,8 +35,11 @@ class TestStringCalculator(unittest.TestCase):
     
     def test_add_with_custom_single_one_character_delimiter(self)->None:
         """Test adding numbers with a custom single character delimiter."""
-        result = self.calculator.add("//;\n1;2")
-        self.assertEqual(result, 3)
+        result1 = self.calculator.add("//;\n1;2")
+        result2 = self.calculator.add("//=\n4=2")
+
+        self.assertEqual(result1, 3)
+        self.assertEqual(result2, 6)
 
 if __name__ == '__main__':
     unittest.main()
