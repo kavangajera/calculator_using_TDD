@@ -72,8 +72,8 @@ class StringCalculator:
             header = numbers.split("\n", 1)[0][2:]  # Get the part after "//"
             if header.startswith("[") and header.endswith("]"):
                 # Extract everything between [ ]
-                match = re.search(r"\[(.*?)\]", header)
-                return [re.escape(match.group(1))]
+                matches = re.findall(r"\[(.*?)\]", header)
+                return [re.escape(match) for match in matches]
             else:
                 # Single custom delimiter
                 return [re.escape(header)]
