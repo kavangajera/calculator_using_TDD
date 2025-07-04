@@ -69,10 +69,17 @@ class StringCalculator:
             List[str]: A list of delimiters to be used for splitting.
         """
         if numbers.startswith("//"):
-            delimiter_declaration = numbers.split("\n", 1)[0]
-            custom_delimiter = delimiter_declaration[2:]  # works for single-character delimiters
-            return [re.escape(custom_delimiter)]
-        return [",", "\n"]
+            header = numbers.split("\n", 1)[0][2:]  # Get the part after "//"
+            if header.startswith("[") and header.endswith("]"):
+                # Extract everything between [ ]
+                match = re.search(r"\[(.*?)\]", header)
+                return [re.escape(match.group(1))]
+            else:
+                # Single custom delimiter
+                return [re.escape(header)]
+        else:
+            # Default delimiters: comma and newline
+            return [",", "\n"]
 
     def calculate_sum(self, numbers: str, delimiters: list[str]) -> int:
         """
