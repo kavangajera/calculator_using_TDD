@@ -92,8 +92,7 @@ class StringCalculator:
         Returns:
             int: The sum of the integers found.
         """
-        escaped_delimiters = [re.escape(delimiter) for delimiter in delimiters]
-        pattern = "|".join(escaped_delimiters)  # create regex pattern: e.g. ",|\n|;"
+        pattern = "|".join(delimiters)  # create regex pattern: e.g. ",|\n|;"
         tokens = re.split(pattern, numbers)
         #finding a negative number and calculating total
         negatives = []
