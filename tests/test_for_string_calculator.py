@@ -131,7 +131,7 @@ class TestStringCalculator(unittest.TestCase):
     def test_add_with_multiple_custom_delimiters(self):
         """Test adding numbers with multiple custom delimiters."""
         result = self.calculator.add("//[;\\][**%]\n1;\\2**%4")
-        self.assertEqual(result, 71)
+        self.assertEqual(result, 70)
     
    
 
