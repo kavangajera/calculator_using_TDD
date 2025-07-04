@@ -15,7 +15,9 @@ class StringCalculator:
         if not numbers:
             return 0
         
-        list_of_numbers = numbers.split(',')
+        new_line_replaced = numbers.replace('\n', ',')
+        
+        list_of_numbers = new_line_replaced.split(',')
 
         return sum(int(num) for num in list_of_numbers)
         

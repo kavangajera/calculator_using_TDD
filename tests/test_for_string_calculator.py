@@ -32,6 +32,11 @@ class TestStringCalculator(unittest.TestCase):
         """Test adding numbers with newlines and commas."""
         result = self.calculator.add("1\n2,3")
         self.assertEqual(result, 6)
+    
+    def test_add_with_custom_single_one_character_delimiter(self)->None:
+        """Test adding numbers with a custom single character delimiter."""
+        result = self.calculator.add("//;\n1;2")
+        self.assertEqual(result, 3)
 
 if __name__ == '__main__':
     unittest.main()
