@@ -74,12 +74,19 @@ class TestStringCalculator(unittest.TestCase):
             self.calculator.add("//;\n1;-2;3;-4")
         self.assertEqual(str(context.exception), "negatives not allowed: -2,-4")
     
+    def test_get_called_count_returns_number_of_add_calls(self):
+        """Test that get_called_count returns the number of times add has been called."""
+        self.assertEqual(self.calculator.get_called_count(), 0)  # Initially 0
+
+        self.calculator.add("1,2")
+        self.calculator.add("3")
+        self.calculator.add("")
+
+        self.assertEqual(self.calculator.get_called_count(), 3)
+
 
     
     
-
-    
-
 
 if __name__ == '__main__':
     unittest.main()
