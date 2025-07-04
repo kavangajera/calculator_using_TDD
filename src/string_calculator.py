@@ -67,12 +67,16 @@ class StringCalculator:
         pattern = "|".join(delimiters)  # create regex pattern: e.g. ",|\n|;"
         tokens = re.split(pattern, numbers)
         #finding a negative number and calculating total
+        negatives = []
         total = 0
         for token in tokens:
             if token:
                 num = int(token)
                 if num < 0:
-                    raise ValueError(f"negatives not allowed: {num}")  
+                    negatives.append(str(num))
                 total += num
+
+        if negatives:
+            raise ValueError(f"negatives not allowed: {','.join(negatives)}")
 
         return total
