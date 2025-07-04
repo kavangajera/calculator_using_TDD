@@ -96,6 +96,11 @@ class TestStringCalculator(unittest.TestCase):
         calc.add("1,2")
         calc.add("//;\n1;2")
         self.assertEqual(received, [("1,2", 3),("//;\n1;2", 3)])
+    
+    def test_add_with_numbers_greater_than_1000_ignored(self):
+        """Test that numbers greater than 1000 are ignored."""
+        result = self.calculator.add("1001,2,3,1000")
+        self.assertEqual(result, 1005)
 
 
 
